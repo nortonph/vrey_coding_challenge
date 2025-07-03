@@ -1,18 +1,33 @@
 import sequelize from '../config/database';
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes, Model, Optional, ModelDefined } from 'sequelize';
 
 interface UnitAttributes {
-  id: number,
+  id: number;
+  houseId: number;
 }
 
-interface UnitInstance extends Model<UnitAttributes>, UnitAttributes {};
+interface UnitInstance extends Model<UnitAttributes>, UnitAttributes {}
 
-const Unit = sequelize.define<UnitInstance>('Unit', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  }
-}, {});
+type UnitCreationAttributes = Optional<UnitAttributes, 'id'>;
+
+const Unit: ModelDefined<UnitAttributes, UnitCreationAttributes> =
+  sequelize.define<UnitInstance>(
+    'Unit',
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      houseId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'House',
+          key: 'id',
+        },
+      },
+    },
+    {}
+  );
 
 export default Unit;
