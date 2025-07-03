@@ -1,6 +1,5 @@
 import sequelize from '../config/database';
 import { DataTypes, Model } from 'sequelize';
-import Unit from './Unit';
 
 interface HouseAttributes {
   id: number,
@@ -15,9 +14,5 @@ const House = sequelize.define<HouseInstance>('House', {
     autoIncrement: true,
   },
 }, {});
-
-House.hasMany(Unit, {
-  foreignKey: 'houseId'
-});
 
 export default House;

@@ -1,6 +1,5 @@
 import sequelize from '../config/database';
 import { DataTypes, Model } from 'sequelize';
-import Unit from './Unit';
 
 interface MeterValue {
   value: number,
@@ -42,9 +41,5 @@ const Meter = sequelize.define<MeterInstance>('Meter', {
     type: DataTypes.JSON,
   }
 }, {});
-
-Meter.belongsTo(Unit, {
-  foreignKey: 'unitId'
-})
 
 export default Meter;

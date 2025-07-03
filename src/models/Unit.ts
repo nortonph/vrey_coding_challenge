@@ -1,7 +1,5 @@
 import sequelize from '../config/database';
 import { DataTypes, Model } from 'sequelize';
-import House from './House';
-import Meter from './Meter';
 
 interface UnitAttributes {
   id: number,
@@ -16,12 +14,5 @@ const Unit = sequelize.define<UnitInstance>('Unit', {
     autoIncrement: true,
   }
 }, {});
-
-Unit.belongsTo(House, {
-  foreignKey: 'houseId'
-})
-Unit.hasMany(Meter, {
-  foreignKey: 'unitId'
-})
 
 export default Unit;
