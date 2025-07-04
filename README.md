@@ -31,6 +31,8 @@ API_URL = 'http://localhost:9292'
 Navigate to `http://localhost:3000` in browser
 
 ## Missing features
+- Command line interface
 - Display metering data in table
 - Calculation of daily values and daily average solar consumption
 - Styles
+- Tests
