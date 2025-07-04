@@ -1,14 +1,14 @@
 import 'dotenv/config';
 import express from 'express';
 import sequelize from './config/database';
+import createMockData from './helpers/mock';
 import './models/associations';
-
-import House from './models/House';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
+  createMockData();
   res.send('..welcome to consumptuous..');
 });
 
