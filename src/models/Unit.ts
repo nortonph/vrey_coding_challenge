@@ -22,7 +22,7 @@ const Unit: ModelDefined<UnitAttributes, UnitCreationAttributes> =
       houseId: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'House',
+          model: 'Houses',
           key: 'id',
         },
       },
