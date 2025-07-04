@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import path from 'path';
 import express from 'express';
 import sequelize from './config/database';
 import createMockData from './helpers/mock';
@@ -8,8 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-  createMockData();
-  res.send('..welcome to consumptuous..');
+  res.sendFile(path.join(__dirname, 'views/index.html'));
 });
 
 const db_connect = async () => {
@@ -24,6 +24,12 @@ const db_connect = async () => {
     console.log('__successfully synchronized all models to database');
   } catch (error) {
     console.error('__unable to sync database: ', error);
+  }
+  try {
+    await createMockData();
+    console.log('__successfully generated mock data and seeded database');
+  } catch (error) {
+    console.error('__unable to generat mock data or seed database: ', error);
   }
 
   app.listen(PORT, () => {

@@ -14,7 +14,7 @@ export default async function fetchData(location_id: string) {
 
     const json = await response.json();
 
-    console.log(json);
+    // console.log(json);
     return json;
   } catch (error) {
     console.error('__error fetching data: ', error.message);

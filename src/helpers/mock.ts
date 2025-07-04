@@ -13,7 +13,6 @@ export default async function createMockData() {
     const data_market = await fetchData(String(location_id_market));
     const data_metering = await fetchData(location_id_metering);
     await Unit.create({ id: i, houseId: 0 });
-    console.log(fetchData(location_id_metering))
     await Meter.create({
       unitId: i,
       type: 'market_location',
