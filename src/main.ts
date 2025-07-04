@@ -3,14 +3,13 @@ import path from 'path';
 import express from 'express';
 import sequelize from './config/database';
 import createMockData from './helpers/mock';
+import controller from './controllers/index';
 import './models/associations';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/index.html'));
-});
+app.get('/', controller.getAllMeters);
 
 const db_connect = async () => {
   try {
