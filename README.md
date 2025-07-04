@@ -9,6 +9,11 @@ Local Postgres database
 
 ## Quick Start
 
+### Clone Mako API and run locally
+[see here](https://github.com/VREY-Energie/mock-measurement-api-recruiting)
+
+### Install postgres if not already present
+
 ### Create .env file in root directory with contents:
 ```
 PORT=3000
